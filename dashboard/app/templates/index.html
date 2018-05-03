@@ -1,0 +1,529 @@
+<!doctype>
+<html  lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CS-522 Data Mining</title>
+    <link rel="shortcut icon" href="http://illinoistechathletics.com/sports/msoc/2015-16/files/scarlethawks_4clr_ad_hoc_ad_hoc.jpg?max_width%5Cx3d450" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/app.css">
+    <link href="../static/build/nv.d3.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+
+    <script src="../static/build/nv.d3.js"></script>
+    <link rel="stylesheet" href="../static/css/reveal.css">
+    <script src="../static/js/jquery.min.js" type="text/javascript"></script>
+    <script src="../static/js/jquery.reveal.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+       google.charts.load('current', {'packages':['corechart','bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+[{%- for j in legends %}
+
+                '{{j}}',
+                {%- endfor %}]
+,
+          {%- for X in temp %}
+                [new Date({{X[0]}}*1000),{%- for j in X[1:] %}
+
+                {{j}},
+                {%- endfor %}],
+                {%- endfor %}
+         
+        ]);
+// '{{dayname}}', {{ num1 }}+1,{{ num2 }}+5,{{ num3 }}
+        var options = {
+          title: 'Brands Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+
+
+         var data = new google.visualization.arrayToDataTable([
+          ['Brands', 'Positive', 'Negative'],
+          {%- for X in card %}
+                ['{{X.brand}}', {{X.price_pos}},{{X.price_neg}}],
+                {%- endfor %}
+        ]);
+
+        var options = {
+         
+          bars: 'vertical', // Required for Material Bar Charts.
+          series: {
+            0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
+            1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
+          },
+          axes: {
+            x: {
+              distance: {label: 'parsecs'}, // Bottom x-axis.
+              brightness: {side: 'top', label: 'apparent magnitude'} // Top x-axis.
+            }
+          }
+        };
+
+      var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
+      chart.draw(data, options);
+
+var data = new google.visualization.arrayToDataTable([
+          ['Brands', 'Positive', 'Negative'],
+          {%- for X in card %}
+                ['{{X.brand}}', {{X.service_pos}},{{X.service_neg}}],
+                {%- endfor %}
+        ]);
+
+        var options = {
+         
+          bars: 'vertical', // Required for Material Bar Charts.
+          series: {
+            0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
+            1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
+          },
+          axes: {
+            x: {
+              distance: {label: 'parsecs'}, // Bottom x-axis.
+              brightness: {side: 'top', label: 'apparent magnitude'} // Top x-axis.
+            }
+          }
+        };
+
+      var chart = new google.charts.Bar(document.getElementById('dual_x_div_1'));
+      chart.draw(data, options);
+       var data = new google.visualization.arrayToDataTable([
+          ['Brand', 'Popularity'],
+          {%- for X in card %}
+                ['{{X.brand}}', {{X.pos}}+{{X.neg}}+{{X.neu}}],
+                {%- endfor %}
+        ]);
+
+        var options = {
+          width: 200,
+          height:150,
+          legend: { position: 'none' },
+          
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Popularity'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('popularity'));
+        // Convert the Classic options to Material options.
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+        var data = new google.visualization.arrayToDataTable([
+          ['Brand', 'Popularity'],
+          {%- for X in card %}
+                ['{{X.brand}}', {{X.pos}}+{{X.neg}}+{{X.neu}}],
+                {%- endfor %}
+        ]);
+
+        var options = {
+          width: 200,
+          height:150,
+          legend: { position: 'none' },
+          
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Popularity'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('popularity'));
+        // Convert the Classic options to Material options.
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+        var data = new google.visualization.arrayToDataTable([
+          ['Brand', 'Positive%'],
+          {%- for X in card %}
+                ['{{X.brand}}', {{X.pos}}*100.0/({{X.pos}}+{{X.neg}}+{{X.neu}})],
+                {%- endfor %}
+        ]);
+
+        var options = {
+          width: 200,
+          height:150,
+          colors: ['green'],
+          legend: { position: 'none' },
+          
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Positive Percentage'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('pp'));
+        // Convert the Classic options to Material options.
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+         
+        var data = new google.visualization.arrayToDataTable([
+          ['Brand', 'Negative%'],
+          {%- for X in card %}
+                ['{{X.brand}}', {{X.neg}}*100.0/({{X.pos}}+{{X.neg}}+{{X.neu}})],
+                {%- endfor %}
+        ]);
+
+        var options = {
+          width: 200,
+          height:150,
+          legend: { position: 'none' },
+           colors: ['red'],
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Negative Percentage'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('neg'));
+        // Convert the Classic options to Material options.
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+    
+<script type="text/javascript">
+   $(document).foundation();
+
+        var nowTemp = new Date();
+        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+        var checkin = $('#dpd1').fdatepicker({
+            onRender: function (date) {
+                return date.valueOf() < now.valueOf() ? '' : '';
+            }
+        }).on('changeDate', function (ev) {
+            if (ev.date.valueOf() > checkout.date.valueOf()) {
+                var newDate = new Date(ev.date)
+                newDate.setDate(newDate.getDate() + 1);
+                checkout.update(newDate);
+            }
+            checkin.hide();
+            $('#dpd2')[0].focus();
+        }).data('datepicker');
+        var checkout = $('#dpd2').fdatepicker({
+            onRender: function (date) {
+                return date.valueOf() > now.valueOf() ? 'disabled' : '';
+            }
+        }).on('changeDate', function (ev) {
+            checkout.hide();
+        }).data('datepicker');
+
+</script>
+</head>
+<style>
+.centered {
+    margin: 0 auto;
+    text-align: left;
+    width: 800px;
+}
+</style>
+<body>
+    
+ <div class="row" style="padding-left:20px">
+    <div class="top-bar-left" style="padding:10px">
+         <a href="/index"><img src="http://cs.iit.edu/~jkorah/img/logo.png" width="10%" /></a>
+    </div>
+    <div class="top-bar-right" style="padding:10px">
+            <ul class="dropdown menu" data-dropdown-menu>
+               <li>
+                <!-- <a href="/logout" class="iconlink" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Logout"><i class="fa fa-power-off"></i></a>
+               -->
+              </li>
+             
+            </ul>
+    </div>
+</div>
+
+<div class="columns large-12" style ='background-color: #d32323'>
+    <form action="upload" method="post">
+    <div class="inline" style ='padding-left:30%;padding-bottom:10px;'>
+        
+        <select name="category" class="filter-drop filter-select;" style ='height:3.3rem;padding-bottom:5px;'>
+                         <option disabled selected value> -- select an option -- </option>
+
+            {% for item in category %}
+            <option value="{{item}}">{{item}}</option>
+        
+            {% endfor %}
+
+        </select>
+    </div>
+    <div class="inline" >
+        <select name="location" class="filter-drop filter-select;" style ='height:3.3rem;padding-bottom:5px;'>
+            <option disabled selected value> -- select an option -- </option>
+
+           {% for item in location %}
+            <option value="{{item}}">{{item}}</option>
+        
+            {% endfor %}
+        </select>
+         
+    </div>
+   
+    <div class="inline">
+    <input style ='height:3.3rem;' type="submit" value="Search">
+    </div>
+</form>
+</div>
+
+ <div class="panel with-nav-tabs panel-default">
+                <div class="panel-heading">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab1default" data-toggle="tab">Scorecard</a></li>
+                            <li><a href="#tab2default" data-toggle="tab">Tweets</a></li>
+                            <li><a href="#tab3default" data-toggle="tab">Overview</a></li>
+                            
+                        </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1default">
+
+<div class="row">
+  <div class="columns large-8 ">
+    <h4>Results Card For : {{serchtag}} For :{{locationtag}}</h4>
+    <div class="row">
+      <div class="panel panel-default" style="margin-left:15px;margin-top:5px; padding:0px">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3" style="height:150px">
+                                    <i class="fa fa-comments fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><b>{{card[0].total}}</b></div>
+                                    <div>Total Category Tweets</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+          <div  id="popularity" height="50%" width="50%"></div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+          <div  id="pp" height="50%" width="50%"></div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+          <div  id="neg" height="50%" width="50%"></div>
+                </div>
+            </div>
+        </div>
+      </div>
+    <div class="row">
+      <div class="panel panel-default" style="margin-left:25px;margin-top:5px;">
+        <div class="panel-body">
+            <div id="curve_chart" style="width: 100%;"></div>
+        </div>
+      </div>
+
+    </div>
+    
+
+    </div>
+  </div>
+  <div class="columns large-4 ">
+      <div class="panel panel-default" style="margin-left:15px;margin-top:5px">
+      <div class="panel-body">
+        <div class="row">
+          <h5 style="padding-left:10px">Price Mentions</h5>
+          <div  id="dual_x_div" height="50%" width="50%"></div>
+        </div>
+        <hr>
+        <div class="row">
+          <h5 style="padding-left:10px">Service Mentions</h5>
+          <div  id="dual_x_div_1" height="50px" width="50%"></div>
+        </div>
+    </div>
+    <div>
+  </div>
+</div>
+</div>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+
+
+                        <div class="tab-pane fade" id="tab2default">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+ <div class="row" id="myUL">
+  {% for item in data %}
+    <div class="columns large-12 ">
+        {% if item.predicted_sentiment== "Positive" %}
+         <tem>   
+        <div class="panel panel-primary" style="margin-left:10px">
+        <div class="panel-body">
+          <div class="columns large-2 ">
+            <img src="https://aysuncandotcomdottr.files.wordpress.com/2016/04/shutterstock_132875531.jpg" alt="Mountain View" style="width:200px;height:70px;">
+
+          </div>
+          <div class="columns large-10 ">
+
+           <font size="3" style="color:#229DD5"><b>{{item.Brand}}</b><br>{{item.Text}}<br>
+            <br><i class="fa fa-calendar" aria-hidden="true"></i> {{item.Date}}  
+            Sentiment : <i class="fa fa-thumbs-up" aria-hidden="true"></i></font>  
+         
+
+          </div>
+
+         </div>
+        </div></tem>
+         
+         {% else  %}
+         <tem> <div class="panel panel-danger" style="margin-left:10px">
+        <div class="panel-body">
+          <div class="columns large-2 ">
+            <img src="https://aysuncandotcomdottr.files.wordpress.com/2016/04/shutterstock_132875531.jpg" alt="Mountain View" style="width:200px;height:70px;">
+
+          </div>
+          <div class="columns large-10 ">
+
+             <font size="3" style="color:#D54022"><b>{{item.Brand}}</b><br>{{item.Text}}<br>
+             {% if item.predicted_sentiment== "Neutral" %}
+            <br><i class="fa fa-calendar" aria-hidden="true"></i> {{item.Date}}  
+            Sentiment : <i class="fa fa-meh-o" aria-hidden="true"></i></font>  
+         
+            {%else%}
+            <br><i class="fa fa-calendar" aria-hidden="true"></i> {{item.Date}}  
+            Sentiment : <i class="fa fa-thumbs-down" aria-hidden="true"></i></font>  
+            {% endif %}
+          </div>
+
+         </div>
+        </div></tem>
+         {% endif %}
+     </div>
+     
+         <!--   <table >
+
+<TR>
+   <TD class="c2">{{item.Brand}}</TD>
+   <TD class="c3">{{item.Geo}}</TD>
+   <TD class="c2">{{item.Text}}</TD>
+   <TD class="c2">{{item.Mentions}}</TD>
+   <TD class="c3">{{item.Permalink}}</TD>
+   <TD class="c2">{{item.Date}}</TD>
+   <TD class="c3">{{item.predicted_sentiment}}</TD>
+   <TD class="c4"><SPAN>{{item.price}}</SPAN></TD>
+   <TD class="c5"><SPAN>{{item.service}}</SPAN></TD>
+    <TD class="c5"><SPAN>{{item.quality}}</SPAN></TD>
+
+</TR>
+ -->
+{% endfor %}
+<!-- </table> -->
+  </div>
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                        <div class="tab-pane fade" id="tab3default">   <h4>What We Learned</h4>
+                          <br>
+                          <h5>Text Processing</h5>
+                            1. Mining tweeter (textual) data to understand customers.<br>
+                            2. Machine Learning Classification Algorithms
+                            <br>2. 
+                          <h5>Limitations</h5>
+                          1. Difficult to handle huge amount of data.<br>
+                          2. Tough to figure out customer opinions if tweets are sarcastic.<br>
+                          3. Some people love texting and get a little carried away with the symbols. So, no clue what they are talking about.
+
+                          <h5>Future Scope</h5>
+                          Infinity Based on Bussiness Domain</div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("tem");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("font")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+
+        }
+    }
+}
+</script>
+
+<!-- <div class="row">
+  <div class="columns large-8 ">
+    <div class="panel panel-default" style="margin-left:25px;margin-top:5px; padding:0px">
+      <div class="panel-heading">Score Card For : {{serchtag}}</div>
+      <div class="panel-body">
+        <div  id="chart_div_bar_quality"></div>
+      </div>
+    </div>
+  </div>
+  <div class="columns large-4 ">
+    <div class="panel panel-primary" style="margin-left:25px;margin-top:5px">
+      <div class="panel-heading">Price Comparison</div>
+      <div class="panel-body">
+        <div  id="chart_div_bar_service"></div>
+      </div>
+    </div>
+  </div>
+<br>
+ -->
+  
+ 
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!doctype>
+<html  lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CS-522 Data Mining</title>
+    <link rel="shortcut icon" href="http://illinoistechathletics.com/sports/msoc/2015-16/files/scarlethawks_4clr_ad_hoc_ad_hoc.jpg?max_width%5Cx3d450" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/app.css">
+    <link href="../static/build/nv.d3.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+
+    <script src="../static/build/nv.d3.js"></script>
+    <link rel="stylesheet" href="../static/css/reveal.css">
+    <script src="../static/js/jquery.min.js" type="text/javascript"></script>
+    <script src="../static/js/jquery.reveal.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+   $(document).foundation();
+
+        var nowTemp = new Date();
+        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+        var checkin = $('#dpd1').fdatepicker({
+            onRender: function (date) {
+                return date.valueOf() < now.valueOf() ? '' : '';
+            }
+        }).on('changeDate', function (ev) {
+            if (ev.date.valueOf() > checkout.date.valueOf()) {
+                var newDate = new Date(ev.date)
+                newDate.setDate(newDate.getDate() + 1);
+                checkout.update(newDate);
+            }
+            checkin.hide();
+            $('#dpd2')[0].focus();
+        }).data('datepicker');
+        var checkout = $('#dpd2').fdatepicker({
+            onRender: function (date) {
+                return date.valueOf() > now.valueOf() ? 'disabled' : '';
+            }
+        }).on('changeDate', function (ev) {
+            checkout.hide();
+        }).data('datepicker');
+
+</script>
+</head>
+<style>
+.centered {
+    margin: 0 auto;
+    text-align: left;
+    width: 800px;
+}
+</style>
+<body>
+
+    
+ <div class="row" style="padding-left:20px">
+    <div class="top-bar-left" style="padding:10px">
+         <a href="/index"><img src="http://cs.iit.edu/~jkorah/img/logo.png" width="10%" /></a>
+    </div>
+    <div class="top-bar-right" style="padding:10px">
+            <ul class="dropdown menu" data-dropdown-menu>
+               <li>
+                <!-- <a href="/logout" class="iconlink" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Logout"><i class="fa fa-power-off"></i></a>
+               -->
+              </li>
+             
+            </ul>
+    </div>
+</div>
+
+
+<div class="columns large-12" style ='background-color: #d32323'>
+    <form action="upload" method="post">
+    <div class="inline" style ='padding-left:30%;padding-bottom:10px;'>
+        
+        <select name="category" class="filter-drop filter-select;" style ='height:3.3rem;padding-bottom:5px;'>
+                         <option disabled selected value> -- select an option -- </option>
+
+            {% for item in category %}
+            <option value="{{item}}">{{item}}</option>
+        
+            {% endfor %}
+
+        </select>
+    </div>
+    <div class="inline" >
+        <select name="location" class="filter-drop filter-select;" style ='height:3.3rem;padding-bottom:5px;'>
+            <option disabled selected value> -- select an option -- </option>
+
+           {% for item in location %}
+            <option value="{{item}}">{{item}}</option>
+        
+            {% endfor %}
+        </select>
+         
+    </div>
+   
+    <div class="inline">
+    <a href=""> <i class="fa fa-search"><input type="submit"></i></a>
+    </div>
+</form>
+</div>
+
+
+<div width="40%">
+    <table >
+{% for item in data %}
+<TR>
+   <TD class="c2">{{item.Brand}}</TD>
+   <TD class="c3">{{item.Geo}}</TD>
+   <TD class="c2">{{item.Text}}</TD>
+   <TD class="c2">{{item.Mentions}}</TD>
+   <TD class="c3">{{item.Permalink}}</TD>
+   <TD class="c2">{{item.Date}}</TD>
+   <TD class="c3">{{item.predicted_sentiment}}</TD>
+   <TD class="c4"><SPAN>{{item.price}}</SPAN></TD>
+   <TD class="c5"><SPAN>{{item.service}}</SPAN></TD>
+    <TD class="c5"><SPAN>{{item.quality}}</SPAN></TD>
+
+</TR>
+{% endfor %}
+</table>
+</div>
+   
+ 
+</body>
+</html>

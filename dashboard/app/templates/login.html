@@ -1,0 +1,56 @@
+
+
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>CS-522 Data Mining</title>
+    <link rel="shortcut icon" href="https://s3-media2.fl.yelpcdn.com/bphoto/0P1Jc0fIEU7JOrIrdij5Cw/ls.jpg" />
+
+    
+    <link rel="stylesheet" href="../static/css/reset.css">
+
+    
+        <link rel="stylesheet" href="../static/css/style.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <section>
+  <span></span>
+<h1>Member Login</h1>
+  {% block content %}
+    <fieldset>
+        <form action="" method="POST" name="form">
+           
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <label class="control-label" for="username">Username</label>
+                    {{ form.username }}
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="password">Password</label>
+                    {{ form.password }}
+                </div>
+                <button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
+            
+        </form>
+    </fieldset>
+
+{% endblock %}
+  
+  <!-- <h2>
+    <a href='#'>Forgot Password?</a>
+  </h2> -->    
+    <h2><small>© 2017 All Rights IIT-Chicago<br> Contact rgawade@hawk.iit.edu for access</small></h2>
+</section>
+    
+    
+    
+  </body>
+</html>
