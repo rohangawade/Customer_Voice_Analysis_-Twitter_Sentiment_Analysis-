@@ -16,3 +16,10 @@ Gradient Descent, Passive Aggressive Classifier to predict the sentiments.
  Analysis
 McDonalds is popular in Chicago, burgerking is having more percentage of people tweeting positive tweets and papajohns has more percentage of people tweeting negative tweets.
   <img src="/images/Food_Chicago.JPG" />
+  <li> Price and Service Related Analysis
+   Analysis
+• From the above plots we can see that McDonalds has the maximum number of positive and negative tweets with respect to price and service related words.
+• Pizza hut seems to be costly as the number of negative tweets related to price words are more than positive tweets. Same is for burgerking, dominos and papajohns(Price Mentions Graph)
+• Service related words have more number of positive tweets for burgerking, dominos mcdonalds and pizzahut. But papajohns service seems to be having more negative tweets. (Service Mentions Graph)
+    <img src="/images/PriceServiceMentioned.JPG" />
+    
