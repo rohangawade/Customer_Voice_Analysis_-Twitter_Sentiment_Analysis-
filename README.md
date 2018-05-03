@@ -15,4 +15,4 @@ Gradient Descent, Passive Aggressive Classifier to predict the sentiments.
 <li> Detailed report for Chicago area<br>
  Analysis
 McDonalds is popular in Chicago, burgerking is having more percentage of people tweeting positive tweets and papajohns has more percentage of people tweeting negative tweets.
-  <img src="images/FOOD_Chicago.JPG>
+  <img src="images/FOOD_Chicago.JPG" />
