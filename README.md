@@ -7,4 +7,4 @@ CS 522- Advanced Data Mining Project.
 Gradient Descent, Passive Aggressive Classifier to predict the sentiments.
 <li>Created a Data Visualization dashboard to display how the brand is performing with respect to popularity, positive and negative sentiments
 across different citites in US. 
-<li> Technology:  Python, scikitlearn, nltk, NLP, flask, html5, bootstrap.
+<li> Technology:  Python, scikitlearn, nltk, NLP, flask, html5, bootstrap, Twitter Stream/Search API
