@@ -9,6 +9,10 @@ Gradient Descent, Passive Aggressive Classifier to predict the sentiments.
 <li> Technology:  Python, scikitlearn, nltk, NLP, flask, html5, bootstrap, Twitter Stream/Search API, AWS EC2, Amazon Cloud.
   
  <b>Result</b>
- <li>Dashboard
+ <li>Dashboard <br>
   The dashboard displays tweets across one month timespan. People tweeted more about McDonalds at the start of April. Also the number of price and service mentioned tweets are displayed at the right hand side. 
   <img src="images/dashboard.png" />
+<li> Detailed report for Chicago area<br>
+ Analysis
+McDonalds is popular in Chicago, burgerking is having more percentage of people tweeting positive tweets and papajohns has more percentage of people tweeting negative tweets.
+  <img src="images/FOOD_Chicago.JPG>
