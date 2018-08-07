@@ -15,7 +15,7 @@ def main():
     role="manager"
     
     name="TeamADM_new"
-    email="abhishekbhardwaj13506@gmail.com"
+    email="rgawade@hawk.iit.edu"
     validity="01/12/2017"
     active="true"
 
