@@ -38,7 +38,6 @@ protobuf==3.1.0.post1
 py2app==0.7.3
 pymongo==3.3.0
 redis==2.10.5
-requests==2.11.0
 requests-oauthlib==0.6.2
 scikit-learn==0.17.1
 scikits.statsmodels==0.3.1
