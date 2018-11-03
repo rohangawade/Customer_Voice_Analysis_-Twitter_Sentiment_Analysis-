@@ -6,7 +6,7 @@ climate==0.4.6
 configobj==5.0.6
 decorator==4.0.10
 downhill==0.3.2
-Flask==0.11.1
+flask>=0.12.3
 Flask-GoogleMaps==0.2.4
 Flask-Login==0.3.2
 Flask-WTF==0.12
